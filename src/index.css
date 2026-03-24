@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 8%;
+    --foreground: 210 40% 96%;
+
+    --card: 222 44% 12%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 222 44% 12%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 174 72% 46%;
+    --primary-foreground: 222 47% 8%;
+
+    --secondary: 222 30% 18%;
+    --secondary-foreground: 210 40% 90%;
+
+    --muted: 222 30% 16%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 36 95% 60%;
+    --accent-foreground: 222 47% 8%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 30% 20%;
+    --input: 222 30% 20%;
+    --ring: 174 72% 46%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 222 44% 10%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 174 72% 46%;
+    --sidebar-primary-foreground: 222 47% 8%;
+    --sidebar-accent: 222 30% 18%;
+    --sidebar-accent-foreground: 210 40% 90%;
+    --sidebar-border: 222 30% 20%;
+    --sidebar-ring: 174 72% 46%;
+
+    /* Custom tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(174 72% 46%), hsl(190 80% 40%));
+    --gradient-accent: linear-gradient(135deg, hsl(36 95% 60%), hsl(25 90% 55%));
+    --gradient-card: linear-gradient(145deg, hsl(222 44% 14%), hsl(222 44% 10%));
+    --shadow-glow: 0 0 20px hsl(174 72% 46% / 0.15);
+    --shadow-card: 0 4px 20px hsl(222 47% 4% / 0.5);
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+/* Leaflet overrides for dark theme */
+.leaflet-container {
+  background: hsl(222 47% 8%) !important;
+  border-radius: var(--radius);
+}
+
+.leaflet-tile-pane {
+  filter: brightness(0.75) contrast(1.1) saturate(0.8);
+}
+
+.leaflet-control-zoom a {
+  background: hsl(222 44% 12%) !important;
+  color: hsl(210 40% 96%) !important;
+  border-color: hsl(222 30% 20%) !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: hsl(222 44% 12%) !important;
+  color: hsl(210 40% 96%) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-card) !important;
+}
+
+.leaflet-popup-tip {
+  background: hsl(222 44% 12%) !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(222 44% 10%);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(222 30% 25%);
+  border-radius: 3px;
+}
+
+/* Pulse animation for voice */
+@keyframes voice-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 hsl(174 72% 46% / 0.4); }
+  50% { box-shadow: 0 0 0 12px hsl(174 72% 46% / 0); }
+}
+
+.voice-active {
+  animation: voice-pulse 1.5s infinite;
+}
